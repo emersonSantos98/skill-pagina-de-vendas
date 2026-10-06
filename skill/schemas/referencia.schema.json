@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "estrutura de referência (saída de capturar-referencia.mjs)",
+  "type": "object",
+  "required": ["modo", "capturadoEm", "desktop"],
+  "properties": {
+    "modo": { "enum": ["referencia", "auditoria"] },
+    "capturadoEm": { "type": "string" },
+    "desktop": {
+      "type": "object",
+      "properties": {
+        "url": { "type": "string" }, "titulo": { "type": "string" }, "lang": { "type": ["string", "null"] },
+        "alturaPagina": { "type": "integer" },
+        "headings": { "type": "array", "items": { "type": "object", "properties": { "nivel": { "type": "integer" }, "texto": { "type": "string" }, "y": { "type": "integer" } } } },
+        "ctas": { "type": "array", "items": { "type": "object", "properties": { "texto": { "type": "string" }, "href": { "type": ["string", "null"] }, "y": { "type": "integer" } } } },
+        "precos": { "type": "array", "items": { "type": "string" } },
+        "parcelamento": { "type": "array", "items": { "type": "string" } },
+        "faq": { "type": "array", "items": { "type": "string" } },
+        "sinais": { "type": "object" },
+        "footer": { "type": "string" },
+        "acessibilidade": { "type": "object" }
+      }
+    },
+    "celular": { "type": "object" }
+  }
+}

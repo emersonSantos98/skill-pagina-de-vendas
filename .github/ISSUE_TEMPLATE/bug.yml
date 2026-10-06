@@ -1,0 +1,35 @@
+name: Bug
+description: Algo não funciona como esperado
+labels: ["bug"]
+body:
+  - type: textarea
+    id: descricao
+    attributes:
+      label: "O que aconteceu?"
+      description: "Comportamento atual vs esperado"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduzir
+    attributes:
+      label: "Como reproduzir"
+      placeholder: "1. Rodei `npx ... install`\n2. ..."
+    validations:
+      required: true
+  - type: input
+    id: versao
+    attributes:
+      label: "Versão do pacote"
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: ambiente
+    attributes:
+      label: "Ambiente"
+      placeholder: "macOS 15 · Node 22 · Claude Code"
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Logs"
+      render: shell

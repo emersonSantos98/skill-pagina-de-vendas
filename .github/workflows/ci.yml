@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [main, dev]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: test (node ${{ matrix.node }} · ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [18, 20, 22]
+        # Windows/macOS só no Node 22: o glob de `node --test` é nativo a partir do 21.
+        exclude:
+          - { os: windows-latest, node: 18 }
+          - { os: windows-latest, node: 20 }
+          - { os: macos-latest, node: 18 }
+          - { os: macos-latest, node: 20 }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm ci
+      - run: npm test
+      - run: npm run lint:skill
+      - name: Instalação simulada
+        shell: bash
+        run: |
+          node bin/cli.mjs install --dir "$RUNNER_TEMP/home"
+          test -f "$RUNNER_TEMP/home/.claude/skills/pagina-de-vendas/SKILL.md"
+      - name: Conteúdo do pacote
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 22
+        run: npm pack --dry-run
+
+  pr-target:
+    name: Fluxo de branches
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: PRs para main só a partir de dev
+        if: github.base_ref == 'main' && github.head_ref != 'dev'
+        run: |
+          echo "::error::PRs para main devem vir de dev. Abra o PR contra a branch dev."
+          exit 1
+      - run: echo "ok"
+
+  # Job único exigido pelo ruleset (agrega a matriz).
+  ci-ok:
+    name: ci-ok
+    if: always()
+    needs: [test, pr-target]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resultado
+        run: |
+          if [[ "${{ needs.test.result }}" != "success" ]]; then exit 1; fi
+          if [[ "${{ needs.pr-target.result }}" == "failure" ]]; then exit 1; fi
+          echo "CI ok"

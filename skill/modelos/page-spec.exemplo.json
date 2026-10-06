@@ -1,0 +1,73 @@
+{
+  "_aviso": "EXEMPLO FICTÍCIO para ilustrar o formato. Não reutilize provas, números ou dados legais.",
+  "meta": {
+    "projeto": "exemplo-curso-planilhas",
+    "product_type": "curso",
+    "ticket": { "valor": 497, "moeda": "BRL", "faixa": "medio" },
+    "awareness": "problema",
+    "sophistication": 3,
+    "traffic_sources": ["frio_pago", "remarketing"],
+    "ad_match": "Pare de refazer o mesmo relatório toda semana",
+    "goal": "compra",
+    "length": "longa",
+    "hero_type": "promessa",
+    "sensitive_niche": false,
+    "framework": {
+      "primario": "PAS",
+      "secundario": "Mecanismo único",
+      "justificativa": "Público sente a dor (relatórios manuais) mas o mercado de cursos de Excel está saturado (sofisticação 3)."
+    },
+    "big_idea": "Relatório bom é o que se atualiza sozinho.",
+    "mechanism": "Método de 3 abas: dados brutos → tratamento → painel."
+  },
+  "beliefs_map": [
+    { "belief": "Meu problema é o processo, não minha habilidade", "status": "precisa_instalar", "modules": ["problema", "mecanismo"] },
+    { "belief": "Consigo aplicar com pouco tempo", "status": "precisa_instalar", "modules": ["como-funciona"] }
+  ],
+  "objections": [
+    { "id": "o1", "text": "Já fiz curso de Excel e não usei", "source": "suporte", "severity": 5, "answered_by": ["mecanismo", "depoimentos"], "proof_ids": ["p1"] },
+    { "id": "o2", "text": "Não tenho tempo", "source": "pesquisa", "severity": 4, "answered_by": ["como-funciona"], "proof_ids": ["p2"] },
+    { "id": "o3", "text": "E se não servir para mim?", "source": "hipotese", "severity": 3, "answered_by": ["garantia", "faq"], "proof_ids": [] }
+  ],
+  "proofs": [
+    { "id": "p1", "type": "depoimento", "verified": true, "consent": true, "name": "Aluna Exemplo", "role_or_context": "Analista financeira", "result": "Relatório semanal de 3h para 20min", "typicality_note": "Resultado individual; varia conforme o caso." },
+    { "id": "p2", "type": "demo", "verified": true, "description": "Vídeo de 2 min montando o painel" }
+  ],
+  "modules": [
+    { "id": "hero", "type": "hero", "purpose": "Relatório que se atualiza sozinho, para quem perde horas no Excel", "journey_stage": 1 },
+    { "id": "problema", "type": "problema", "purpose": "Nomear o retrabalho semanal", "journey_stage": 2 },
+    { "id": "mecanismo", "type": "mecanismo", "purpose": "Método de 3 abas explica por que agora funciona", "journey_stage": 3 },
+    { "id": "como-funciona", "type": "como_funciona", "purpose": "Aulas curtas, aplicar no próprio relatório", "journey_stage": 5, "proof_ids": ["p2"] },
+    { "id": "depoimentos", "type": "depoimentos", "purpose": "Gente com a mesma rotina conseguiu", "journey_stage": 4, "proof_ids": ["p1"] },
+    { "id": "oferta", "type": "oferta", "purpose": "O que está incluído", "journey_stage": 5 },
+    { "id": "pricing", "type": "pricing", "purpose": "Preço transparente", "journey_stage": 6 },
+    { "id": "garantia", "type": "garantia", "purpose": "Risco baixo", "journey_stage": 8 },
+    { "id": "faq", "type": "faq", "purpose": "Acesso, pagamento, nota fiscal", "journey_stage": 7 },
+    { "id": "cta-final", "type": "cta_final", "purpose": "Fechamento", "journey_stage": 9 },
+    { "id": "footer", "type": "footer_legal", "purpose": "Quem vende e como contatar", "journey_stage": 8 }
+  ],
+  "omitted": [
+    { "type": "agitacao", "motivo": "Dor já é forte; agitação soaria exagerada." },
+    { "type": "escassez", "motivo": "Venda perpétua, sem limite real." },
+    { "type": "vsl", "motivo": "Sem vídeo de vendas gravado." }
+  ],
+  "ctas": [
+    { "id": "cta-hero", "label": "Quero meu relatório automático", "intent": "comprar", "hierarchy": "primario", "destination": "https://pay.exemplo.com/checkout", "position": ["hero", "pos_oferta", "final"], "context_microcopy": "Acesso imediato · 7 dias de garantia", "urgency": { "level": "nenhuma" } },
+    { "id": "cta-ver", "label": "Ver como funciona", "intent": "ver_mais", "hierarchy": "secundario", "destination": "#como-funciona", "position": ["hero"] }
+  ],
+  "offer": {
+    "core": "Curso Relatórios Automáticos",
+    "deliverables": [{ "item": "12 aulas curtas", "objection_resolved": "o2" }],
+    "bonuses": [],
+    "price": { "avista": 497, "parcelas": { "n": 12, "valor": 49.9, "juros": true }, "recorrencia": "nenhuma" },
+    "anchor": { "tipo": "nenhum" },
+    "guarantee": { "dias": 7, "condicional": false, "texto": "Peça reembolso em até 7 dias pela plataforma." },
+    "scarcity": { "real": false }
+  },
+  "legal": {
+    "razao_social": "Empresa Exemplo LTDA",
+    "documento": "00.000.000/0000-00",
+    "endereco": "Rua Exemplo, 0 — Cidade/UF",
+    "contato": "contato@exemplo.com"
+  }
+}

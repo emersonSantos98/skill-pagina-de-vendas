@@ -1,0 +1,21 @@
+name: Sugestão
+description: Nova funcionalidade, módulo, regra ou referência
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problema
+    attributes:
+      label: "Qual problema isso resolve?"
+    validations:
+      required: true
+  - type: textarea
+    id: proposta
+    attributes:
+      label: "Proposta"
+    validations:
+      required: true
+  - type: textarea
+    id: evidencia
+    attributes:
+      label: "Fonte / evidência"
+      description: "Para regras de copy/CRO, cite a fonte e classifique: [E] evidência, [C] consenso, [O] opinião, [T] tendência."

@@ -1,0 +1,48 @@
+{
+  "name": "@emersonsantos98/skill-pagina-de-vendas",
+  "version": "0.1.0",
+  "description": "Skill para Claude Code que diagnostica produto, público e objeções e gera páginas de vendas sob medida (copy + CRO + UX), com verificação automática.",
+  "type": "module",
+  "bin": {
+    "skill-pagina-de-vendas": "bin/cli.mjs"
+  },
+  "files": [
+    "bin/",
+    "skill/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "lint:skill": "node skill/scripts/validar-spec.mjs --spec skill/modelos/page-spec.exemplo.json",
+    "pack:check": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "skill",
+    "agent-skill",
+    "landing-page",
+    "pagina-de-vendas",
+    "copywriting",
+    "cro"
+  ],
+  "author": "Emerson Santos (https://github.com/emersonSantos98)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emersonSantos98/skill-pagina-de-vendas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emersonSantos98/skill-pagina-de-vendas/issues"
+  },
+  "homepage": "https://github.com/emersonSantos98/skill-pagina-de-vendas#readme",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
