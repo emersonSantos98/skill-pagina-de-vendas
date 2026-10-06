@@ -21,7 +21,7 @@ test("install copia a skill e exige --force para sobrescrever", () => {
   const base = mkdtempSync(join(tmpdir(), "pdv-"));
   const [dest] = install({ dir: base, agents: false, force: false });
   assert.ok(existsSync(join(dest, "SKILL.md")));
-  assert.match(readFileSync(join(dest, "SKILL.md"), "utf8"), /^---\nname: pagina-de-vendas/);
+  assert.match(readFileSync(join(dest, "SKILL.md"), "utf8"), /^---\r?\nname: pagina-de-vendas/);
   assert.throws(() => install({ dir: base }), /--force/);
   assert.doesNotThrow(() => install({ dir: base, force: true }));
   assert.equal(uninstall({ dir: base }).length, 1);
